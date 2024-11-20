@@ -1,0 +1,34 @@
+syntax="proto3";
+
+import "google/protobuf/any.proto";
+
+service DataManage {
+  rpc Write(WriteRequest) returns (WriteReply) {}
+  rpc Read(ReadRequest) returns (ReadReply) {}
+  rpc Delete(DeleteRequest) returns (DeleteReply) {}
+}
+
+message WriteRequest {
+  string key = 1;
+  google.protobuf.Any value = 2;
+}
+
+message WriteReply {
+  bool success = 1;
+}
+
+message ReadRequest {
+  string key = 1;
+}
+
+message ReadReply {
+  google.protobuf.Any value = 1;
+}
+
+message DeleteRequest {
+  string key = 1;
+}
+
+message DeleteReply {
+  bool success = 1;
+}
